@@ -12,8 +12,9 @@ let firstNumbervar
 let secondeNumbervar
 let operatorvar
 
-
-
+//
+const firstNumberArr = []
+const secondNumberArr = []
 
 
 //DOM  
@@ -78,7 +79,7 @@ eightButton.classList.add("eightButton")
 nineButton.classList.add("nineButton")
 
 //ADD TEXT
-inputText.textContent = "2 + 2"
+inputText.textContent = ""
 
 
 
@@ -131,28 +132,36 @@ numberButtonsContainer.appendChild(nineButton)
 //Event Listeners 
 
 //Operation buttons 
-plusButton.addEventListener("click", () => console.log("PlusButton clicked"), operatorvar = "+")
-subtractButton.addEventListener("click", () => console.log("subtractButton clicked"))
-multiplyButton.addEventListener("click", () => console.log("multiplyButton clicked"))
-divideButton.addEventListener("click", () => console.log("divideButton clicked"))
-EqualButton.addEventListener("click", () => console.log("EqualButton clicked"), operate(operatorvar, firstNumbervar, secondeNumbervar))
+plusButton.addEventListener("click", () => { console.log("PlusButton clicked"), operatorvar = "+", console.log("Operatorvar = " + operatorvar) })
+subtractButton.addEventListener("click", () => { console.log("subtractButton clicked"), operatorvar = "-", console.log("Operatorvar = " + operatorvar) })
+multiplyButton.addEventListener("click", () => { console.log("multiplyButton clicked"), operatorvar = "*", console.log("Operatorvar = " + operatorvar) })
+divideButton.addEventListener("click", () => {
+    console.log("divideButton clicked")
+    operatorvar = "/"
+    console.log("Operatorvar = " + operatorvar)
+})
+EqualButton.addEventListener("click", () => console.log("EqualButton clicked"))
 clearButton.addEventListener("click", () => console.log("clearButton clicked"))
 
 
 //Numbers 
-zeroButton.addEventListener("click", () => display(zeroButton.textContent))
-oneButton.addEventListener("click", () => display(oneButton.textContent), secondeNumbervar = 1)
-twoButton.addEventListener("click", () => display(twoButton.textContent))
-threeButton.addEventListener("click", () => display(threeButton.textContent))
-fourButton.addEventListener("click", () => display(fourButton.textContent))
-fiveButton.addEventListener("click", () => display(fiveButton.textContent))
-sixButton.addEventListener("click", () => display(sixButton.textContent))
-sevenButton.addEventListener("click", () => display(sevenButton.textContent))
-eightButton.addEventListener("click", () => display(eightButton.textContent))
-nineButton.addEventListener("click", () => display(nineButton.textContent, firstNumbervar = 9))
+zeroButton.addEventListener("click", () => {
+    display(zeroButton.textContent)
+    firstOrSeconde(0, operatorvar)
+}
+)
+oneButton.addEventListener("click", () => {display(oneButton.textContent), firstOrSeconde(1, operatorvar)})
+twoButton.addEventListener("click", () => {display(twoButton.textContent), firstOrSeconde(2, operatorvar)})
+threeButton.addEventListener("click", () => {display(threeButton.textContent), firstOrSeconde(3, operatorvar)})
+fourButton.addEventListener("click", () => {display(fourButton.textContent), firstOrSeconde(4, operatorvar)})
+fiveButton.addEventListener("click", () => {display(fiveButton.textContent), firstOrSeconde(5, operatorvar)})
+sixButton.addEventListener("click", () => {display(sixButton.textContent), firstOrSeconde(6, operatorvar)})
+sevenButton.addEventListener("click", () => {display(sevenButton.textContent), firstOrSeconde(7, operatorvar)})
+eightButton.addEventListener("click", () => {display(eightButton.textContent), firstOrSeconde(8, operatorvar)})
+nineButton.addEventListener("click", () => {display(nineButton.textContent), firstOrSeconde(9, operatorvar)})
 
 
-//Functions that perform calculations
+//Functions that perform calculationsssss
 function add(a, b) {
     let sum = a + b
     return sum
@@ -172,9 +181,31 @@ function divide(a, b) {
     return a / b
 }
 
-//When user presses = then perform operation !
+
+
+function firstOrSeconde(num, operatorval) {
+    console.log("FirostOrSeconde Accesed")
+    console.log(num)
+    console.log(operatorval)
+
+
+    if (operatorval == "+" || operatorval == "-" || operatorval == "*" || operatorval == "/") {
+        console.log("secondArr " + secondNumberArr)
+        secondNumberArr.push(num)
+
+    }
+    else {
+        console.log("firstarr " + firstNumberArr)
+
+        firstNumberArr.push(num)
+    }
+}
+
+
+//When user presses = then perform operations !ss
 function operate(operator, firstNumber, secondeNumber) {
     console.log("Function accesed ")
+    console.log(operator)
     //Maybe switch is better? 
     if (operator === "+") {
         console.log("Operator + Acess")
@@ -205,4 +236,10 @@ function display(number) {
 
 
 
+function clear() {
+    //Reset Everything 
+}
 
+console.log(operatorvar)
+console.log(firstNumberArr)
+console.log(secondNumberArr)
