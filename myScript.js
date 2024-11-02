@@ -1,6 +1,4 @@
-//TODO check out what display window i should use? 
-//Maybe just a reguler container with p that updates based on buttons
-//TODO TUrn numbers into an array and store and use latter on for operations.
+
 //Start with basic functions 
 //Only two inputs varibals hower look into use of array and reduce to calculate sum 
 // + - * /
@@ -140,7 +138,15 @@ divideButton.addEventListener("click", () => {
     operatorvar = "/"
     console.log("Operatorvar = " + operatorvar)
 })
-EqualButton.addEventListener("click", () => console.log("EqualButton clicked"))
+EqualButton.addEventListener("click", () => {
+    console.log("EqualButton clicked")
+    
+    
+    firstNumbervar = firstNumberArr.reduce((sum, current) => sum += current )
+    secondeNumbervar = secondNumberArr.reduce((sum, current) => sum += current)
+    operate(operatorvar, firstNumbervar, secondeNumbervar)
+
+})
 clearButton.addEventListener("click", () => console.log("clearButton clicked"))
 
 
@@ -150,21 +156,21 @@ zeroButton.addEventListener("click", () => {
     firstOrSeconde(0, operatorvar)
 }
 )
-oneButton.addEventListener("click", () => {display(oneButton.textContent), firstOrSeconde(1, operatorvar)})
-twoButton.addEventListener("click", () => {display(twoButton.textContent), firstOrSeconde(2, operatorvar)})
-threeButton.addEventListener("click", () => {display(threeButton.textContent), firstOrSeconde(3, operatorvar)})
-fourButton.addEventListener("click", () => {display(fourButton.textContent), firstOrSeconde(4, operatorvar)})
-fiveButton.addEventListener("click", () => {display(fiveButton.textContent), firstOrSeconde(5, operatorvar)})
-sixButton.addEventListener("click", () => {display(sixButton.textContent), firstOrSeconde(6, operatorvar)})
-sevenButton.addEventListener("click", () => {display(sevenButton.textContent), firstOrSeconde(7, operatorvar)})
-eightButton.addEventListener("click", () => {display(eightButton.textContent), firstOrSeconde(8, operatorvar)})
-nineButton.addEventListener("click", () => {display(nineButton.textContent), firstOrSeconde(9, operatorvar)})
+oneButton.addEventListener("click", () => { display(oneButton.textContent), firstOrSeconde("1", operatorvar) })
+twoButton.addEventListener("click", () => { display(twoButton.textContent), firstOrSeconde("2", operatorvar) })
+threeButton.addEventListener("click", () => { display(threeButton.textContent), firstOrSeconde("3", operatorvar) })
+fourButton.addEventListener("click", () => { display(fourButton.textContent), firstOrSeconde("4", operatorvar) })
+fiveButton.addEventListener("click", () => { display(fiveButton.textContent), firstOrSeconde("5", operatorvar) })
+sixButton.addEventListener("click", () => { display(sixButton.textContent), firstOrSeconde("6", operatorvar) })
+sevenButton.addEventListener("click", () => { display(sevenButton.textContent), firstOrSeconde("7", operatorvar) })
+eightButton.addEventListener("click", () => { display(eightButton.textContent), firstOrSeconde("8", operatorvar) })
+nineButton.addEventListener("click", () => { display(nineButton.textContent), firstOrSeconde("9", operatorvar) })
 
 
 //Functions that perform calculationsssss
 function add(a, b) {
     let sum = a + b
-    return sum
+    return display(sum)
 }
 
 function subtract(a, b) {
