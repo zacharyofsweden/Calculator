@@ -1,7 +1,8 @@
 //TODO check out what display window i should use? 
 //Maybe just a reguler container with p that updates based on buttons
-
+//TODO TUrn numbers into an array and store and use latter on for operations.
 //Start with basic functions 
+//Only two inputs varibals hower look into use of array and reduce to calculate sum 
 // + - * /
 
 //Global variabals
@@ -130,30 +131,31 @@ numberButtonsContainer.appendChild(nineButton)
 //Event Listeners 
 
 //Operation buttons 
-plusButton.addEventListener("click", () => console.log("PlusButton clicked"))
+plusButton.addEventListener("click", () => console.log("PlusButton clicked"), operatorvar = "+")
 subtractButton.addEventListener("click", () => console.log("subtractButton clicked"))
 multiplyButton.addEventListener("click", () => console.log("multiplyButton clicked"))
 divideButton.addEventListener("click", () => console.log("divideButton clicked"))
-EqualButton.addEventListener("click", () => console.log("EqualButton clicked"))
+EqualButton.addEventListener("click", () => console.log("EqualButton clicked"), operate(operatorvar, firstNumbervar, secondeNumbervar))
 clearButton.addEventListener("click", () => console.log("clearButton clicked"))
 
 
 //Numbers 
-zeroButton.addEventListener("click", () => console.log("zero clicked"))
-oneButton.addEventListener("click", () => console.log("one clicked"))
-twoButton.addEventListener("click", () => console.log("two clicked"))
-threeButton.addEventListener("click", () => console.log("three clicked"))
-fourButton.addEventListener("click", () => console.log("four clicked"))
-fiveButton.addEventListener("click", () => console.log("five clicked"))
-sixButton.addEventListener("click", () => console.log("six clicked"))
-sevenButton.addEventListener("click", () => console.log("seven clicked"))
-eightButton.addEventListener("click", () => console.log("eight clicked"))
-nineButton.addEventListener("click", () => console.log("nine clicked"))
+zeroButton.addEventListener("click", () => display(zeroButton.textContent))
+oneButton.addEventListener("click", () => display(oneButton.textContent), secondeNumbervar = 1)
+twoButton.addEventListener("click", () => display(twoButton.textContent))
+threeButton.addEventListener("click", () => display(threeButton.textContent))
+fourButton.addEventListener("click", () => display(fourButton.textContent))
+fiveButton.addEventListener("click", () => display(fiveButton.textContent))
+sixButton.addEventListener("click", () => display(sixButton.textContent))
+sevenButton.addEventListener("click", () => display(sevenButton.textContent))
+eightButton.addEventListener("click", () => display(eightButton.textContent))
+nineButton.addEventListener("click", () => display(nineButton.textContent, firstNumbervar = 9))
 
 
 //Functions that perform calculations
 function add(a, b) {
-    return sum = a + b
+    let sum = a + b
+    return sum
 }
 
 function subtract(a, b) {
@@ -193,6 +195,11 @@ function operate(operator, firstNumber, secondeNumber) {
         console.log("Operator / Acess")
         return divide(firstNumber, secondeNumber)
     }
+}
+
+
+function display(number) {
+    inputText.textContent = number
 }
 
 
