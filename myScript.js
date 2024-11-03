@@ -24,6 +24,7 @@ const inputWindow = document.createElement("div")
 const inputText = document.createElement("p")
 
 //Buttons and contianers
+const buttonContainersCon = document.createElement("div")
 const operatorButtonContainer = document.createElement("div")
 const numberButtonsContainer = document.createElement("div")
 
@@ -55,6 +56,7 @@ const nineButton = document.createElement("button")
 inputWindow.classList.add("inputWindow")
 
 //Button classes
+buttonContainersCon.classList.add("buttonContainersCon")
 operatorButtonContainer.classList.add("operatorButtonContainer")
 numberButtonsContainer.classList.add("ButtonContainer")
 
@@ -88,7 +90,7 @@ plusButton.textContent = "+"
 subtractButton.textContent = "-"
 multiplyButton.textContent = "*"
 divideButton.textContent = "/"
-EqualButton.textContent = "="
+EqualButton.textContent = "REASULT"
 clearButton.textContent = "CLEAR"
 
 //numbers 
@@ -107,27 +109,35 @@ nineButton.textContent = "9"
 //append children
 calculatorContainer.appendChild(inputWindow)
 inputWindow.appendChild(inputText)
-calculatorContainer.appendChild(numberButtonsContainer)
-calculatorContainer.appendChild(operatorButtonContainer)
+calculatorContainer.appendChild(buttonContainersCon)
+buttonContainersCon.appendChild(operatorButtonContainer)
+buttonContainersCon.appendChild(numberButtonsContainer)
 
-
+operatorButtonContainer.appendChild(clearButton)
 operatorButtonContainer.appendChild(plusButton)
 operatorButtonContainer.appendChild(subtractButton)
 operatorButtonContainer.appendChild(multiplyButton)
-operatorButtonContainer.appendChild(divideButton)
-operatorButtonContainer.appendChild(EqualButton)
-operatorButtonContainer.appendChild(clearButton)
 
-numberButtonsContainer.appendChild(zeroButton)
-numberButtonsContainer.appendChild(oneButton)
-numberButtonsContainer.appendChild(twoButton)
-numberButtonsContainer.appendChild(threeButton)
-numberButtonsContainer.appendChild(fourButton)
-numberButtonsContainer.appendChild(fiveButton)
-numberButtonsContainer.appendChild(sixButton)
-numberButtonsContainer.appendChild(sevenButton)
-numberButtonsContainer.appendChild(eightButton)
-numberButtonsContainer.appendChild(nineButton)
+
+
+operatorButtonContainer.appendChild(oneButton)
+operatorButtonContainer.appendChild(twoButton)
+operatorButtonContainer.appendChild(threeButton)
+operatorButtonContainer.appendChild(divideButton)
+operatorButtonContainer.appendChild(fourButton)
+operatorButtonContainer.appendChild(fiveButton)
+operatorButtonContainer.appendChild(sixButton)
+operatorButtonContainer.appendChild(sevenButton)
+operatorButtonContainer.appendChild(EqualButton)
+operatorButtonContainer.appendChild(eightButton)
+operatorButtonContainer.appendChild(nineButton)
+
+
+
+
+operatorButtonContainer.appendChild(zeroButton)
+
+
 
 
 //Event Listeners 
