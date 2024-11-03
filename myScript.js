@@ -3,6 +3,8 @@
 //Only two inputs varibals hower look into use of array and reduce to calculate sum 
 // + - * /
 
+//TODO Refector code
+//TODO add another container for all the button containers
 //Global variabals
 
 //Operators Varibals
@@ -105,8 +107,9 @@ nineButton.textContent = "9"
 //append children
 calculatorContainer.appendChild(inputWindow)
 inputWindow.appendChild(inputText)
-calculatorContainer.appendChild(operatorButtonContainer)
 calculatorContainer.appendChild(numberButtonsContainer)
+calculatorContainer.appendChild(operatorButtonContainer)
+
 
 operatorButtonContainer.appendChild(plusButton)
 operatorButtonContainer.appendChild(subtractButton)
