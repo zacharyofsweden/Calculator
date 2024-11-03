@@ -139,17 +139,18 @@ divideButton.addEventListener("click", () => {
     operatorvar = "/"
     console.log("Operatorvar = " + operatorvar)
 })
+
 EqualButton.addEventListener("click", () => {
     console.log("EqualButton clicked")
     console.log("Current Sumvar is :" + sumVar)
     //TODO Refactor so it has it's own function
     console.log("Operator var right now in equalbutton is : " + operatorvar)
-    if (sumVar > 0 && operatorvar == "+" || operatorvar == "-" || operatorvar == "*" || operatorvar == "/") {
-
+    if ((sumVar > 0 && operatorvar == "+" )|| (sumVar > 0 &&  operatorvar == "-") || (sumVar > 0 &&  operatorvar == "*") || (sumVar > 0 &&  operatorvar == "/")) {
         firstNumbervar = sumVar
         secondeNumbervar = secondNumberArr.reduce((sum, current) => sum += current)
     }
     else {
+        
         firstNumbervar = firstNumberArr.reduce((sum, current) => sum += current)
         secondeNumbervar = secondNumberArr.reduce((sum, current) => sum += current)
     }
@@ -165,11 +166,7 @@ clearButton.addEventListener("click", () => clear())
 
 
 //Numbers 
-zeroButton.addEventListener("click", () => {
-    display(zeroButton.textContent)
-    firstOrSeconde(0, operatorvar)
-}
-)
+zeroButton.addEventListener("click", () => { display(zeroButton.textContent), firstOrSeconde("0", operatorvar) })
 oneButton.addEventListener("click", () => { display(oneButton.textContent), firstOrSeconde("1", operatorvar) })
 twoButton.addEventListener("click", () => { display(twoButton.textContent), firstOrSeconde("2", operatorvar) })
 threeButton.addEventListener("click", () => { display(threeButton.textContent), firstOrSeconde("3", operatorvar) })
@@ -188,21 +185,42 @@ function add(a, b) {
     firstNumbervar = 0;
     firstNumberArr.length = 0
     secondNumberArr.length = 0
+    
     return display(sumVar)
 }
 
 function subtract(a, b) {
-    return a - b
+    sumVar = parseFloat(a) - parseFloat(b)
+    console.log("subtract Accesed")
+    console.log(firstNumbervar)
+    console.log(secondeNumbervar)
+    secondeNumbervar = 0;
+    firstNumbervar = 0;
+    firstNumberArr.length = 0
+    secondNumberArr.length = 0
+    console.log(sumVar)
+    return display(sumVar)
 }
 
 
 function multiply(a, b) {
-    return a * b
+    sumVar = parseFloat(a) * parseFloat(b)
+    secondeNumbervar = 0;
+    firstNumbervar = 0;
+    firstNumberArr.length = 0
+    secondNumberArr.length = 0
+    return display(sumVar)
 }
 
 
 function divide(a, b) {
-    return a / b
+    let sumBeforeDec = parseFloat(a) / parseFloat(b)
+    sumVar = sumBeforeDec.toFixed(3)
+    secondeNumbervar = 0;
+    firstNumbervar = 0;
+    firstNumberArr.length = 0
+    secondNumberArr.length = 0
+    return display(sumVar)
 }
 
 
@@ -220,7 +238,7 @@ function firstOrSeconde(num, operatorval) {
     }
     else {
 
-        sumVar = 0;
+        sumVar = -1;
         firstNumberArr.push(num)
         console.log("firstarr " + firstNumberArr)
     }
@@ -268,9 +286,9 @@ function clear() {
     secondeNumbervar = ""
     operatorvar = ""
     sumVar = -1;
-    
+
     firstNumberArr.length = 0
     secondNumberArr.length = 0
     display("Waiting for input...")
-    
+
 }
