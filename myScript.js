@@ -9,7 +9,7 @@
 let firstNumbervar
 let secondeNumbervar
 let operatorvar
-
+let sumVar = -1;
 //
 const firstNumberArr = []
 const secondNumberArr = []
@@ -130,6 +130,7 @@ numberButtonsContainer.appendChild(nineButton)
 //Event Listeners 
 
 //Operation buttons 
+clear()
 plusButton.addEventListener("click", () => { console.log("PlusButton clicked"), operatorvar = "+", console.log("Operatorvar = " + operatorvar) })
 subtractButton.addEventListener("click", () => { console.log("subtractButton clicked"), operatorvar = "-", console.log("Operatorvar = " + operatorvar) })
 multiplyButton.addEventListener("click", () => { console.log("multiplyButton clicked"), operatorvar = "*", console.log("Operatorvar = " + operatorvar) })
@@ -140,14 +141,27 @@ divideButton.addEventListener("click", () => {
 })
 EqualButton.addEventListener("click", () => {
     console.log("EqualButton clicked")
-    
-    
-    firstNumbervar = firstNumberArr.reduce((sum, current) => sum += current )
-    secondeNumbervar = secondNumberArr.reduce((sum, current) => sum += current)
+    console.log("Current Sumvar is :" + sumVar)
+    //TODO Refactor so it has it's own function
+    console.log("Operator var right now in equalbutton is : " + operatorvar)
+    if (sumVar > 0 && operatorvar == "+" || operatorvar == "-" || operatorvar == "*" || operatorvar == "/") {
+
+        firstNumbervar = sumVar
+        secondeNumbervar = secondNumberArr.reduce((sum, current) => sum += current)
+    }
+    else {
+        firstNumbervar = firstNumberArr.reduce((sum, current) => sum += current)
+        secondeNumbervar = secondNumberArr.reduce((sum, current) => sum += current)
+    }
+
     operate(operatorvar, firstNumbervar, secondeNumbervar)
+    operatorvar = "";
+    console.log("First Array is :" + firstNumberArr)
+    console.log("Second Array is :" + secondNumberArr)
+
 
 })
-clearButton.addEventListener("click", () => console.log("clearButton clicked"))
+clearButton.addEventListener("click", () => clear())
 
 
 //Numbers 
@@ -167,10 +181,14 @@ eightButton.addEventListener("click", () => { display(eightButton.textContent), 
 nineButton.addEventListener("click", () => { display(nineButton.textContent), firstOrSeconde("9", operatorvar) })
 
 
-//Functions that perform calculationsssss
+//Functions that perform calculationssssss
 function add(a, b) {
-    let sum = a + b
-    return display(sum)
+    sumVar = parseFloat(a) + parseFloat(b)
+    secondeNumbervar = 0;
+    firstNumbervar = 0;
+    firstNumberArr.length = 0
+    secondNumberArr.length = 0
+    return display(sumVar)
 }
 
 function subtract(a, b) {
@@ -196,14 +214,15 @@ function firstOrSeconde(num, operatorval) {
 
 
     if (operatorval == "+" || operatorval == "-" || operatorval == "*" || operatorval == "/") {
-        console.log("secondArr " + secondNumberArr)
-        secondNumberArr.push(num)
 
+        secondNumberArr.push(num)
+        console.log("secondArr " + secondNumberArr)
     }
     else {
-        console.log("firstarr " + firstNumberArr)
 
+        sumVar = 0;
         firstNumberArr.push(num)
+        console.log("firstarr " + firstNumberArr)
     }
 }
 
@@ -216,6 +235,7 @@ function operate(operator, firstNumber, secondeNumber) {
     if (operator === "+") {
         console.log("Operator + Acess")
         return add(firstNumber, secondeNumber)
+
     }
 
     if (operator === "-") {
@@ -244,8 +264,13 @@ function display(number) {
 
 function clear() {
     //Reset Everything 
+    firstNumbervar = ""
+    secondeNumbervar = ""
+    operatorvar = ""
+    sumVar = -1;
+    
+    firstNumberArr.length = 0
+    secondNumberArr.length = 0
+    display("Waiting for input...")
+    
 }
-
-console.log(operatorvar)
-console.log(firstNumberArr)
-console.log(secondNumberArr)
